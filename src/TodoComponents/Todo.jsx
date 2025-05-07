@@ -41,6 +41,16 @@ export const Todo = () =>{
       setInputValue('');
    }
 
+   // todo task delete 
+   const newTask = {
+      id: Date.now(), 
+      text: inputValue
+    };
+    
+   const handleDeleteTask = (id) =>{
+      setTask(Prev => Prev.filter(task=>task.id !== id));
+   }
+
 
 
     return (
@@ -69,7 +79,7 @@ export const Todo = () =>{
                                <span>{currTask}</span>
                                <div className="btn">
                                   <button className="check"><MdCheckCircle /></button>
-                                  <button className="delete"><MdDelete /></button>
+                                  <button className="delete" onClick={()=>handleDeleteTask(currTask.id)}><MdDelete /></button>
                                </div>
                            </li>
                         )
